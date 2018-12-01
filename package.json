@@ -1,0 +1,39 @@
+{
+  "name": "tjb-auth-login",
+  "version": "0.0.1",
+  "description": "awesome auth-login webcomponent",
+  "main": "docs/tjb-auth-login.min.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "babel --watch tjb-auth-login.js --out-dir docs | http-server",
+    "build": "npm run build-max | npm run build-min",
+    "build-max": "babel tjb-auth-login.js --out-file docs/tjb-auth-login.js",
+    "build-min": "babel --minified tjb-auth-login.js --out-file docs/tjb-auth-login.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjb-webcomponents/tjb-auth-login.git"
+  },
+  "keywords": [
+    "webcomponent",
+    "custom",
+    "element",
+    "htmlelement",
+    "html",
+    "login",
+    "auth",
+    "label"
+  ],
+  "author": "Thibault Jan Beyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tjb-webcomponents/tjb-auth-login/issues"
+  },
+  "homepage": "https://github.com/tjb-webcomponents/tjb-auth-login#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "http-server": "^0.11.1"
+  }
+}

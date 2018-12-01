@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>tjb-auth-login</title>
+  <link rel="stylesheet" href="btn.css">
+  <style>
+    body {
+      text-align: center;
+    }
+    .example {
+      margin: auto;
+      font-family: sans-serif;
+      display: inline-block;
+      text-align: initial;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>tjb-auth-login</h1>
+
+  <h2>Example:</h2>
+
+  <div class="example">
+
+    <tjb-auth-login postbody="{ &quot;lol&quot;: &quot;rofl&quot; }" posturl="/your/api/url">
+      <input class="btn btn--cta btn--fs" value="LOGIN" type="submit" slot="submit" />
+    </tjb-auth-login>
+
+    <script src="tjb-auth-login.js" type="module"></script>
+    <script>
+      const tjbAuthLogin = document.querySelector('tjb-auth-login');
+      tjbAuthLogin.addEventListener('login/location', () => location.reload());
+      tjbAuthLogin.addEventListener('login/error', error => console.log("error", error));
+    </script>
+
+  </div>
+
+</body>
+
+</html>
