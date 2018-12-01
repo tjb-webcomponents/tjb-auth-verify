@@ -73,11 +73,11 @@ All attributes:
 
 ### Events
 
-| name           | details                                  | description                                                                                  |
-| -------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
-| login/location | - href (@String) <br> - target (@string) | triggered when user clicks on links. For instance `register` link or `forgor` password link. |
-| login/success  | - resp (@Object)                         | when the login call returned a success message                                               |
-| login/error    | - resp (@Object)                         | when the login call returned an error message                                                |
+| name     | details                                  | description                                                                                  |
+| -------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
+| redirect | - href (@String) <br> - target (@string) | triggered when user clicks on links. For instance `register` link or `forgor` password link. |
+| success  | - resp (@Object)                         | when the login call returned a success message                                               |
+| error    | - resp (@Object)                         | when the login call returned an error message                                                |
 
 You can listen to events like so: `tjbLogin.addEventListener('login/success', (e) => { /* do stuff */ })`.
 

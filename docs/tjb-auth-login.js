@@ -235,11 +235,11 @@ class tjbAuthLogin extends WebComponent() {
   }
 
   _loginSuccess(resp) {
-    bounce(this.domNode, this.dispatchEvent.bind(this, "login/success", resp));
+    bounce(this.domNode, this.dispatchEvent.bind(this, "success", resp));
   }
 
   _loginError(resp) {
-    this.dispatchEvent("login/error", resp);
+    this.dispatchEvent("error", resp);
     this.errorHandler();
   }
 
@@ -253,7 +253,7 @@ class tjbAuthLogin extends WebComponent() {
   }
 
   _location(href, target) {
-    this.dispatchEvent("login/location", {
+    this.dispatchEvent("redirect", {
       href,
       target
     });
