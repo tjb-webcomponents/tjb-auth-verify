@@ -6,7 +6,7 @@ import "https://tjb-webcomponents.github.io/tjb-statusbar/tjb-statusbar.min.js";
 
 class tjbAuthLogin extends WebComponent() {
   // Styles
-  ////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////
 
   CSS() {
     return html`
