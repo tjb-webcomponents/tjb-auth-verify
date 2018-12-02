@@ -1,20 +1,20 @@
 {
-  "name": "tjb-auth-login",
+  "name": "tjb-auth-register",
   "version": "0.0.1",
-  "description": "awesome auth-login webcomponent",
-  "main": "docs/tjb-auth-login.min.js",
+  "description": "awesome auth-register webcomponent",
+  "main": "docs/tjb-auth-register.min.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "start": "babel --watch tjb-auth-login.js --out-dir docs | http-server",
+    "start": "babel --watch tjb-auth-register.js --out-dir docs | http-server",
     "build": "npm run build-max | npm run build-min",
-    "build-max": "babel tjb-auth-login.js --out-file docs/tjb-auth-login.js",
-    "build-min": "babel --minified tjb-auth-login.js --out-file docs/tjb-auth-login.min.js"
+    "build-max": "babel tjb-auth-register.js --out-file docs/tjb-auth-register.js",
+    "build-min": "babel --minified tjb-auth-register.js --out-file docs/tjb-auth-register.min.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tjb-webcomponents/tjb-auth-login.git"
+    "url": "git+https://github.com/tjb-webcomponents/tjb-auth-register.git"
   },
   "keywords": [
     "webcomponent",
@@ -22,16 +22,16 @@
     "element",
     "htmlelement",
     "html",
-    "login",
+    "register",
     "auth",
     "label"
   ],
   "author": "Thibault Jan Beyer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tjb-webcomponents/tjb-auth-login/issues"
+    "url": "https://github.com/tjb-webcomponents/tjb-auth-register/issues"
   },
-  "homepage": "https://github.com/tjb-webcomponents/tjb-auth-login#readme",
+  "homepage": "https://github.com/tjb-webcomponents/tjb-auth-register#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "http-server": "^0.11.1"

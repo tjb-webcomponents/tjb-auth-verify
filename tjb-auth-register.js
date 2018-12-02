@@ -2,22 +2,24 @@ import WebComponent from "https://tjb-webcomponents.github.io/tjb-webcomponent/t
 import html from "https://tjb-webcomponents.github.io/html-template-string/html-template-string.js";
 import {
   bounce
-} from 'https://tjb-webcomponents.github.io/tjb-gfx/tjb-gfx.min.js'
+} from "https://tjb-webcomponents.github.io/tjb-gfx/tjb-gfx.min.js";
 import "https://tjb-webcomponents.github.io/tjb-input/tjb-input.min.js";
 import "https://tjb-webcomponents.github.io/tjb-statusbar/tjb-statusbar.min.js";
 
-class tjbAuthLogin extends WebComponent() {
+class tjbAuthRegister extends WebComponent() {
   // Styles
-  ///////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
 
   CSS() {
     return html `
       <style>
         :host {
           --background-message-error: #fa354c;
+          --background-login-button: blue;
+
           --color-message-error: white;
           --color-login-info: grey;
-          
+
           /* input */
           --login-input-color-error: #fa354c;
           --login-input-color-success: limegreen;
@@ -172,27 +174,20 @@ class tjbAuthLogin extends WebComponent() {
     `;
 
     return html `
-      <form class="login__form" onsubmit="${e => this.loginHandler(e)}">
+      <form class="login__form" onsubmit="${e => this.registerHandler(e)}">
         ${this.messageNode}
         <div class="login__fieldset">
-          <div class="login__info">Login with your email:</div>
+          <div class="login__info">Register using your email:</div>
         </div>
         <div class="login__fieldset">
           ${this.emailInput} ${this.passwordInput}
-          <slot name="submit" onclick="${e => this.loginHandler(e)}"></slot>
+          <slot name="submit" onclick="${e => this.registerHandler(e)}"></slot>
           <div class="login__footnote">
             <a
-              href="#forgot"
+              href="#login"
               class="link"
-              onclick="${e => this.openHandler(e, "forgot")}"
-              >Forgot Password?</a
-            >
-            |
-            <a
-              href="#register"
-              class="link"
-              onclick="${e => this.openHandler(e, "register")}"
-              >Register Here</a
+              onclick="${e => this.openHandler(e, "login")}"
+              >Login Here</a
             >
           </div>
         </div>
@@ -205,32 +200,34 @@ class tjbAuthLogin extends WebComponent() {
   ////////////////////////////////////////////////////////////
 
   static get observedAttributes() {
-    return [
-      "postbody",
-      "posturl"
-    ];
+    return ["postbody", "posturl"];
   }
 
   // Logic
   ////////////////////////////////////////////////////////////
 
-  loginHandler(event) {
+  registerHandler(event) {
     event.preventDefault();
     if (!this.checkValidity()) return false;
 
     this.statusbar.status = "loading";
 
+    const postbody = this.postbody && this.postbody.replace(/\'/g, '"');
     const body = Object.assign({}, {
-      email: this.emailInput.value,
-      password: this.passwordInput.value
-    }, JSON.parse(this.postbody));
+        email: this.emailInput.value,
+        password: this.passwordInput.value
+      },
+      JSON.parse(postbody || "{}")
+    );
+
+    console.log(body);
 
     return fetch(this.posturl, {
         method: "POST",
-        redirect: 'follow',
-        credentials: 'include',
+        redirect: "follow",
+        credentials: "include",
         headers: new Headers({
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         }),
         body: JSON.stringify(body)
       })
@@ -243,10 +240,7 @@ class tjbAuthLogin extends WebComponent() {
   }
 
   _loginSuccess(resp) {
-    bounce(
-      this.domNode,
-      this.dispatchEvent.bind(this, "success", resp)
-    );
+    bounce(this.domNode, this.dispatchEvent.bind(this, "success", resp));
   }
 
   _loginError(resp) {
@@ -263,10 +257,7 @@ class tjbAuthLogin extends WebComponent() {
 
   openHandler(event, target) {
     event.preventDefault();
-    bounce(
-      event.target,
-      this._location.bind(this, event.target.href, target)
-    );
+    bounce(event.target, this._location.bind(this, event.target.href, target));
   }
 
   _location(href, target) {
@@ -307,10 +298,10 @@ class tjbAuthLogin extends WebComponent() {
         <li>
           Don’t have an account yet?
           <a
-            onclick="${e => this.openHandler(e, "register")}"
-            href="#register"
+            onclick="${e => this.openHandler(e, "login")}"
+            href="#login"
             class="message__link"
-            >Register here</a
+            >Login here</a
           >
         </li>
       </ul>
@@ -323,4 +314,4 @@ class tjbAuthLogin extends WebComponent() {
   }
 }
 
-customElements.define("tjb-auth-login", tjbAuthLogin);
+customElements.define("tjb-auth-register", tjbAuthRegister);

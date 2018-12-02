@@ -1,10 +1,10 @@
 # tjb-auth-login
 
-Webcomponents login form field to login with given credentials
+Webcomponents register form field to register with given credentials
 
 ## Example
 
-https://tjb-webcomponents.github.io/tjb-auth-login/
+https://tjb-webcomponents.github.io/tjb-auth-register/
 
 ## Add to project
 
@@ -20,7 +20,7 @@ Include it:
 
 ```html
 <script
-  src="https://tjb-webcomponents.github.io/tjb-auth-login/tjb-auth-login.min.js"
+  src="https://tjb-webcomponents.github.io/tjb-auth-register/tjb-auth-register.min.js"
   type="module"
 ></script>
 ```
@@ -28,7 +28,7 @@ Include it:
 ### Include via JavaScript
 
 ```JavaScript
-import 'https://tjb-webcomponents.github.io/tjb-auth-login/tjb-auth-login.min.js'
+import 'https://tjb-webcomponents.github.io/tjb-auth-register/tjb-auth-register.min.js'
 ```
 
 ### Include via NPM
@@ -36,19 +36,19 @@ import 'https://tjb-webcomponents.github.io/tjb-auth-login/tjb-auth-login.min.js
 Console:
 
 ```bash
-npm i -S tjb-auth-login
+npm i -S tjb-auth-register
 ```
 
 Then in your code:
 
 ```JavaScript
-import 'tjb-auth-login';
+import 'tjb-auth-register';
 ```
 
 ## Useage
 
 ```html
-<tjb-input></tjb-input>
+<tjb-auth-register></tjb-auth-register>
 ```
 
 ### Attributes
@@ -56,19 +56,19 @@ import 'tjb-auth-login';
 Example:
 
 ```html
-<tjb-login
-  postbody="{ &quot;foo&quot;: &quot;bar&quot; }"
+<tjb-auth-register
+  postbody="{ 'foo': 'bar' }"
   posturl="https://jsonplaceholder.typicode.com/users"
 >
-  <input value="LOGIN" type="submit" slot="submit" />
-</tjb-login>
+  <input value="register" type="submit" slot="submit" />
+</tjb-auth-register>
 ```
 
 All attributes:
 
 | attribute | example                                              | description                                                                             |
 | --------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| postbody  | postbody='{ "foo": "bar" }'                          | JSON Object that will be added to the remote login POSt call.                           |
+| postbody  | postbody="{ 'foo': 'bar' }"                          | JSON Object that will be added to the remote register POSt call.                        |
 | posturl   | posturl="https://jsonplaceholder.typicode.com/users" | `URL` that will be called with a `POST` call and credentials as `application/json` body |
 
 ### Events
@@ -76,10 +76,10 @@ All attributes:
 | name     | details                                  | description                                                                                  |
 | -------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
 | redirect | - href (@String) <br> - target (@string) | triggered when user clicks on links. For instance `register` link or `forgor` password link. |
-| success  | - resp (@Object)                         | when the login call returned a success message                                               |
-| error    | - resp (@Object)                         | when the login call returned an error message                                                |
+| success  | - resp (@Object)                         | when the register call returned a success message                                            |
+| error    | - resp (@Object)                         | when the register call returned an error message                                             |
 
-You can listen to events like so: `tjbLogin.addEventListener('login/success', (e) => { /* do stuff */ })`.
+You can listen to events like so: `tjbregister.addEventListener('register/success', (e) => { /* do stuff */ })`.
 
 ## Styling
 
