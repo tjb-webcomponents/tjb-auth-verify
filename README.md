@@ -1,4 +1,4 @@
-# tjb-auth-login
+# tjb-auth-register
 
 Webcomponents register form field to register with given credentials
 
