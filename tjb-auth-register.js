@@ -5,6 +5,7 @@ import {
 } from "https://tjb-webcomponents.github.io/tjb-gfx/tjb-gfx.min.js";
 import "https://tjb-webcomponents.github.io/tjb-input/tjb-input.min.js";
 import "https://tjb-webcomponents.github.io/tjb-statusbar/tjb-statusbar.min.js";
+import "https://tjb-webcomponents.github.io/tjb-notify/tjb-notify.min.js";
 
 class tjbAuthRegister extends WebComponent() {
   // Styles
@@ -14,11 +15,15 @@ class tjbAuthRegister extends WebComponent() {
     return html `
       <style>
         :host {
-          --background-message-error: #fa354c;
-          --background-login-button: blue;
-
-          --color-message-error: white;
           --color-login-info: grey;
+
+          /* notify */
+          --register-notify-background-error: #fa354c;
+          --register-notify-background-success: limegreen;
+          --register-notify-color-error: white;
+          --register-notify-color-success: white;
+          --register-notify-margin: -55px -40px 20px;
+          --register-notify-padding: 15px 15px 15px 35px;
 
           /* input */
           --login-input-color-error: #fa354c;
@@ -59,47 +64,17 @@ class tjbAuthRegister extends WebComponent() {
           --input-label-margin: var(--login-input-label-margin);
         }
 
+        tjb-notify {
+          --notify-background-error: var(--register-notify-background-error);
+          --notify-background-success: var(--register-notify-background-success);
+          --notify-color-error: var(--register-notify-color-error);
+          --notify-color-success: var(--register-notify-color-success);
+          --notify-margin: var(--register-notify-margin);
+          --notify-padding: var(--register-notify-padding);
+        }
+
         .alert {
           animation: shake 150ms linear 3;
-        }
-
-        .message {
-          max-height: 0;
-          line-height: 1.5;
-          letter-spacing: 0.1px;
-          overflow: hidden;
-          transition: max-height 250ms linear;
-        }
-
-        .message--error {
-          max-height: 300px;
-          background: var(--background-message-error);
-          color: var(--color-message-error);
-          animation: blink 250ms linear 2;
-        }
-
-        .message__link {
-          text-decoration: underline;
-          cursor: pointer;
-        }
-
-        .message--error .message__link {
-          color: var(--color-message-error);
-        }
-
-        .login__message {
-          box-sizing: border-box;
-          display: flex;
-          justify-content: center;
-          margin: -55px 0 20px -40px;
-          overflow: visible;
-          padding: 15px;
-          width: calc(100% + 80px);
-        }
-
-        .login__message > ul {
-          padding: 0;
-          margin: 0;
         }
 
         .login__fieldset {
@@ -170,7 +145,7 @@ class tjbAuthRegister extends WebComponent() {
     `;
 
     this.messageNode = html `
-      <div class="message login__message"></div>
+      <tjb-notify></tjb-notify>
     `;
 
     return html `
@@ -271,14 +246,14 @@ class tjbAuthRegister extends WebComponent() {
     this.writeMessageError = this.writeMessageError.bind(this);
     this.statusbar.status = "alert";
     this.domNode.addEventListener("animationend", this.writeMessageError);
-    this.domNode.classList.add("alert");
+    this.domNode.classList.remove("alert");
+    setTimeout(() => this.domNode.classList.add("alert"), 100);
   }
 
   writeMessageError() {
     this.domNode.removeEventListener("animationend", this.writeMessageError);
 
-    this.messageNode.innerHTML = "";
-    const errorMsg = html `
+    this.messageNode.error = html `
       <ul>
         <li>
           <a
@@ -306,8 +281,6 @@ class tjbAuthRegister extends WebComponent() {
         </li>
       </ul>
     `;
-    this.messageNode.appendChild(errorMsg);
-    this.messageNode.classList.add("message--error");
 
     this.emailInput.showMessage("error");
     this.passwordInput.showMessage("error");
