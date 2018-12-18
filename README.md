@@ -87,23 +87,29 @@ Default public values:
 
 ```css
 :host {
-  --background-message-error: #fa354c;
-  --color-message-error: white;
-  --color-login-info: grey;
+  --register-color-info: grey;
+
+  /* notify */
+  --register-notify-background-error: #fa354c;
+  --register-notify-background-success: limegreen;
+  --register-notify-color-error: white;
+  --register-notify-color-success: white;
+  --register-notify-margin: -55px -40px 20px;
+  --register-notify-padding: 15px 15px 15px 35px;
 
   /* input */
-  --login-input-color-error: #fa354c;
-  --login-input-color-success: limegreen;
-  --login-input-padding: 10px;
-  --login-input-margin: 0 0 30px 0;
-  --login-input-width: 100%;
-  --login-input-border: 1px solid transparent;
-  --login-input-border-bottom: 1px solid lightgrey;
-  --login-input-border-radius: 0;
-  --login-input-font-size: 1rem;
-  --login-input-info-color: grey;
-  --login-input-info-font-size: 0.8rem;
-  --login-input-label-margin: 0 0 5px 0;
+  --register-input-color-error: #fa354c;
+  --register-input-color-success: limegreen;
+  --register-input-padding: 10px;
+  --register-input-margin: 0 0 30px 0;
+  --register-input-width: 100%;
+  --register-input-border: 1px solid transparent;
+  --register-input-border-bottom: 1px solid lightgrey;
+  --register-input-border-radius: 0;
+  --register-input-font-size: 1rem;
+  --register-input-info-color: grey;
+  --register-input-info-font-size: 0.8rem;
+  --register-input-label-margin: 0 0 5px 0;
 
   background: #fff;
   display: block;

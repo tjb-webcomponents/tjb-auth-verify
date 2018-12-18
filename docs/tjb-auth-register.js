@@ -13,7 +13,7 @@ class tjbAuthRegister extends WebComponent() {
     return html`
       <style>
         :host {
-          --color-login-info: grey;
+          --register-color-info: grey;
 
           /* notify */
           --register-notify-background-error: #fa354c;
@@ -24,18 +24,18 @@ class tjbAuthRegister extends WebComponent() {
           --register-notify-padding: 15px 15px 15px 35px;
 
           /* input */
-          --login-input-color-error: #fa354c;
-          --login-input-color-success: limegreen;
-          --login-input-padding: 10px;
-          --login-input-margin: 0 0 30px 0;
-          --login-input-width: 100%;
-          --login-input-border: 1px solid transparent;
-          --login-input-border-bottom: 1px solid lightgrey;
-          --login-input-border-radius: 0;
-          --login-input-font-size: 1rem;
-          --login-input-info-color: grey;
-          --login-input-info-font-size: 0.8rem;
-          --login-input-label-margin: 0 0 5px 0;
+          --register-input-color-error: #fa354c;
+          --register-input-color-success: limegreen;
+          --register-input-padding: 10px;
+          --register-input-margin: 0 0 30px 0;
+          --register-input-width: 100%;
+          --register-input-border: 1px solid transparent;
+          --register-input-border-bottom: 1px solid lightgrey;
+          --register-input-border-radius: 0;
+          --register-input-font-size: 1rem;
+          --register-input-info-color: grey;
+          --register-input-info-font-size: 0.8rem;
+          --register-input-label-margin: 0 0 5px 0;
 
           background: #fff;
           display: block;
@@ -48,18 +48,18 @@ class tjbAuthRegister extends WebComponent() {
         }
 
         tjb-input {
-          --input-color-error: var(--login-input-color-error);
-          --input-color-success: var(--login-input-color-success);
-          --input-padding: var(--login-input-padding);
-          --input-margin: var(--login-input-margin);
-          --input-width: var(--login-input-width);
-          --input-border: var(--login-input-border);
-          --input-border-bottom: var(--login-input-border-bottom);
-          --input-border-radius: var(--login-input-border-radius);
-          --input-font-size: var(--login-input-font-size);
-          --input-info-color: var(--login-input-info-color);
-          --input-info-font-size: var(--login-input-info-font-size);
-          --input-label-margin: var(--login-input-label-margin);
+          --input-color-error: var(--register-input-color-error);
+          --input-color-success: var(--register-input-color-success);
+          --input-padding: var(--register-input-padding);
+          --input-margin: var(--register-input-margin);
+          --input-width: var(--register-input-width);
+          --input-border: var(--register-input-border);
+          --input-border-bottom: var(--register-input-border-bottom);
+          --input-border-radius: var(--register-input-border-radius);
+          --input-font-size: var(--register-input-font-size);
+          --input-info-color: var(--register-input-info-color);
+          --input-info-font-size: var(--register-input-info-font-size);
+          --input-label-margin: var(--register-input-label-margin);
         }
 
         tjb-notify {
@@ -86,7 +86,7 @@ class tjbAuthRegister extends WebComponent() {
         .login__info {
           text-align: center;
           margin-bottom: 10px;
-          color: var(--color-login-info);
+          color: var(--register-color-info);
         }
 
         .login__footnote {
