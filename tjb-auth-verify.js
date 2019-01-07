@@ -174,6 +174,7 @@ class tjbAuthVerify extends WebComponent() {
 
     // rerenders
     this.handleShowkeyChange = this.reRender;
+    this.handleEmailChange = this.reRender;
   }
 
   // Logic
