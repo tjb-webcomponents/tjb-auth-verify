@@ -1,23 +1,23 @@
 {
-  "name": "tjb-auth-register",
+  "name": "tjb-auth-verify",
   "version": "0.0.5",
-  "description": "awesome auth-register webcomponent",
-  "main": "docs/tjb-auth-register.min.js",
+  "description": "awesome auth-verify webcomponent",
+  "main": "docs/tjb-auth-verify.min.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
     "start": "npm run watch-min | npm run watch-max | http-server",
     "build": "npm run build-max | npm run build-min",
-    "build-max": "babel tjb-auth-register.js --out-file docs/tjb-auth-register.js",
-    "build-min": "babel --minified tjb-auth-register.js --out-file docs/tjb-auth-register.min.js",
-    "watch-max": "babel --watch tjb-auth-register.js --out-file docs/tjb-auth-register.js",
-    "watch-min": "babel --watch --minified tjb-auth-register.js --out-file docs/tjb-auth-register.min.js",
+    "build-max": "babel tjb-auth-verify.js --out-file docs/tjb-auth-verify.js",
+    "build-min": "babel --minified tjb-auth-verify.js --out-file docs/tjb-auth-verify.min.js",
+    "watch-max": "babel --watch tjb-auth-verify.js --out-file docs/tjb-auth-verify.js",
+    "watch-min": "babel --watch --minified tjb-auth-verify.js --out-file docs/tjb-auth-verify.min.js",
     "patch": "npm run build; git add .; git commit -m '$M'; git push; npm version patch; npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tjb-webcomponents/tjb-auth-register.git"
+    "url": "git+https://github.com/tjb-webcomponents/tjb-auth-verify.git"
   },
   "keywords": [
     "webcomponent",
@@ -25,16 +25,16 @@
     "element",
     "htmlelement",
     "html",
-    "register",
+    "verify",
     "auth",
     "label"
   ],
   "author": "Thibault Jan Beyer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tjb-webcomponents/tjb-auth-register/issues"
+    "url": "https://github.com/tjb-webcomponents/tjb-auth-verify/issues"
   },
-  "homepage": "https://github.com/tjb-webcomponents/tjb-auth-register#readme",
+  "homepage": "https://github.com/tjb-webcomponents/tjb-auth-verify#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "http-server": "^0.11.1"

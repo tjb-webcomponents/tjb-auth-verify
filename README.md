@@ -1,10 +1,10 @@
-# tjb-auth-register
+# tjb-auth-verify
 
-Webcomponents register form field to register with given credentials
+Webcomponents verify form field to verify with given credentials
 
 ## Example
 
-https://tjb-webcomponents.github.io/tjb-auth-register/
+https://tjb-webcomponents.github.io/tjb-auth-verify/
 
 ## Add to project
 
@@ -20,7 +20,7 @@ Include it:
 
 ```html
 <script
-  src="https://tjb-webcomponents.github.io/tjb-auth-register/tjb-auth-register.min.js"
+  src="https://tjb-webcomponents.github.io/tjb-auth-verify/tjb-auth-verify.min.js"
   type="module"
 ></script>
 ```
@@ -28,7 +28,7 @@ Include it:
 ### Include via JavaScript
 
 ```JavaScript
-import 'https://tjb-webcomponents.github.io/tjb-auth-register/tjb-auth-register.min.js'
+import 'https://tjb-webcomponents.github.io/tjb-auth-verify/tjb-auth-verify.min.js'
 ```
 
 ### Include via NPM
@@ -36,19 +36,19 @@ import 'https://tjb-webcomponents.github.io/tjb-auth-register/tjb-auth-register.
 Console:
 
 ```bash
-npm i -S tjb-auth-register
+npm i -S tjb-auth-verify
 ```
 
 Then in your code:
 
 ```JavaScript
-import 'tjb-auth-register';
+import 'tjb-auth-verify';
 ```
 
 ## Useage
 
 ```html
-<tjb-auth-register></tjb-auth-register>
+<tjb-auth-verify></tjb-auth-verify>
 ```
 
 ### Attributes
@@ -56,30 +56,35 @@ import 'tjb-auth-register';
 Example:
 
 ```html
-<tjb-auth-register
+<tjb-auth-verify
   postbody="{ 'foo': 'bar' }"
   posturl="https://jsonplaceholder.typicode.com/users"
+  mailurl="https://jsonplaceholder.typicode.com/users"
+  email="foo@bar.baz"
 >
-  <input value="register" type="submit" slot="submit" />
-</tjb-auth-register>
+  <input value="verify" type="submit" slot="submit" />
+</tjb-auth-verify>
 ```
 
 All attributes:
 
-| attribute | example                                              | description                                                                             |
-| --------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| postbody  | postbody="{ 'foo': 'bar' }"                          | JSON Object that will be added to the remote register POSt call.                        |
-| posturl   | posturl="https://jsonplaceholder.typicode.com/users" | `URL` that will be called with a `POST` call and credentials as `application/json` body |
+| attribute | example                                              | description                                                                                                                     |
+| --------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| postbody  | postbody="{ 'foo': 'bar' }"                          | JSON Object that will be added to the remote verify POSt call.                                                                  |
+| posturl   | posturl="https://jsonplaceholder.typicode.com/users" | `URL` that will be called with a `POST` call and credentials as `application/json` body                                         |
+| mailurl   | mailurl="https://jsonplaceholder.typicode.com/users" | `URL` that will be called with a `POST` call as `application/json` body. The component will send out a `POST` on initialization |
+| email     | email="foo@bar.baz"                                  | E-Mail that will be used for calls                                                                                              |
 
 ### Events
 
-| name     | details                                  | description                                                                                  |
-| -------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
-| redirect | - href (@String) <br> - target (@string) | triggered when user clicks on links. For instance `register` link or `forgor` password link. |
-| success  | - resp (@Object)                         | when the register call returned a success message                                            |
-| error    | - resp (@Object)                         | when the register call returned an error message                                             |
+| name          | details                                  | description                                                                                |
+| ------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------ |
+| redirect      | - href (@String) <br> - target (@string) | triggered when user clicks on links. For instance `verify` link or `forgor` password link. |
+| success       | - resp (@Object)                         | when the verify (post) call returned a success message                                     |
+| success-email | - resp (@Object)                         | when the email call returned a success message                                             |
+| error         | - resp (@Object)                         | when the verify (post) call returned an error message                                      |
 
-You can listen to events like so: `tjbregister.addEventListener('register/success', (e) => { /* do stuff */ })`.
+You can listen to events like so: `tjbVerify.addEventListener('verify/success', (e) => { /* do stuff */ })`.
 
 ## Styling
 
@@ -87,29 +92,29 @@ Default public values:
 
 ```css
 :host {
-  --register-color-info: grey;
+  --verify-color-info: grey;
 
   /* notify */
-  --register-notify-background-error: #fa354c;
-  --register-notify-background-success: limegreen;
-  --register-notify-color-error: white;
-  --register-notify-color-success: white;
-  --register-notify-margin: -55px -40px 20px;
-  --register-notify-padding: 15px 15px 15px 35px;
+  --verify-notify-background-error: #fa354c;
+  --verify-notify-background-success: limegreen;
+  --verify-notify-color-error: white;
+  --verify-notify-color-success: white;
+  --verify-notify-margin: -55px -40px 20px;
+  --verify-notify-padding: 15px 15px 15px 35px;
 
   /* input */
-  --register-input-color-error: #fa354c;
-  --register-input-color-success: limegreen;
-  --register-input-padding: 10px;
-  --register-input-margin: 0 0 30px 0;
-  --register-input-width: 100%;
-  --register-input-border: 1px solid transparent;
-  --register-input-border-bottom: 1px solid lightgrey;
-  --register-input-border-radius: 0;
-  --register-input-font-size: 1rem;
-  --register-input-info-color: grey;
-  --register-input-info-font-size: 0.8rem;
-  --register-input-label-margin: 0 0 5px 0;
+  --verify-input-color-error: #fa354c;
+  --verify-input-color-success: limegreen;
+  --verify-input-padding: 10px;
+  --verify-input-margin: 0 0 30px 0;
+  --verify-input-width: 100%;
+  --verify-input-border: 1px solid transparent;
+  --verify-input-border-bottom: 1px solid lightgrey;
+  --verify-input-border-radius: 0;
+  --verify-input-font-size: 1rem;
+  --verify-input-info-color: grey;
+  --verify-input-info-font-size: 0.8rem;
+  --verify-input-label-margin: 0 0 5px 0;
 
   background: #fff;
   display: block;
@@ -125,8 +130,8 @@ Default public values:
 These can be overwritten easily by targetting the element. Example:
 
 ```css
-tjb-auth-login {
-  --login-input-border: 1px solid lightgrey;
+tjb-auth-verify {
+  --veridy-input-border: 1px solid lightgrey;
 }
 ```
 

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>tjb-auth-register</title>
+  <title>tjb-auth-verify</title>
   <link rel="stylesheet" href="btn.css">
   <style>
     body {
@@ -22,21 +22,21 @@
 
 <body>
 
-  <h1>tjb-auth-register</h1>
+  <h1>tjb-auth-verify</h1>
 
   <h2>Example:</h2>
 
   <div class="example">
 
-    <tjb-auth-register postbody="{ 'lol': 'rofl' }" posturl="/your/api/url">
-      <input class="btn btn--cta btn--fs" value="register" type="submit" slot="submit" />
-    </tjb-auth-register>
+    <tjb-auth-verify postbody="{ 'lol': 'rofl' }" posturl="/your/api/url">
+      <input class="btn btn--cta btn--fs" value="verify" type="submit" slot="submit" />
+    </tjb-auth-verify>
 
-    <script src="tjb-auth-register.js" type="module"></script>
+    <script src="tjb-auth-verify.js" type="module"></script>
     <script>
-      const tjbAuthRegister = document.querySelector('tjb-auth-register');
-      tjbAuthRegister.addEventListener('redirect', () => location.reload());
-      tjbAuthRegister.addEventListener('error', error => console.log("error", error));
+      const tjbAuthVerify = document.querySelector('tjb-auth-verify');
+      tjbAuthVerify.addEventListener('redirect', () => location.reload());
+      tjbAuthVerify.addEventListener('error', error => console.log("error", error));
     </script>
 
   </div>
