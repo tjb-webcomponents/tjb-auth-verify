@@ -1,8 +1,6 @@
 import WebComponent from "https://tjb-webcomponents.github.io/tjb-webcomponent/tjb-wc.min.js";
 import html from "https://tjb-webcomponents.github.io/html-template-string/html-template-string.js";
-import {
-  bounce
-} from "https://tjb-webcomponents.github.io/tjb-gfx/tjb-gfx.min.js";
+import { bounce } from "https://tjb-webcomponents.github.io/tjb-gfx/tjb-gfx.min.js";
 import "https://tjb-webcomponents.github.io/tjb-input/tjb-input.min.js";
 import "https://tjb-webcomponents.github.io/tjb-statusbar/tjb-statusbar.min.js";
 import "https://tjb-webcomponents.github.io/tjb-notify/tjb-notify.min.js";
@@ -12,7 +10,7 @@ class tjbAuthRegister extends WebComponent() {
   ////////////////////////////////////////////////////////////
 
   CSS() {
-    return html `
+    return html`
       <style>
         :host {
           --register-color-info: grey;
@@ -66,7 +64,9 @@ class tjbAuthRegister extends WebComponent() {
 
         tjb-notify {
           --notify-background-error: var(--register-notify-background-error);
-          --notify-background-success: var(--register-notify-background-success);
+          --notify-background-success: var(
+            --register-notify-background-success
+          );
           --notify-color-error: var(--register-notify-color-error);
           --notify-color-success: var(--register-notify-color-success);
           --notify-margin: var(--register-notify-margin);
@@ -118,11 +118,11 @@ class tjbAuthRegister extends WebComponent() {
   ////////////////////////////////////////////////////////////
 
   HTML() {
-    this.statusbar = html `
+    this.statusbar = html`
       <tjb-statusbar></tjb-statusbar>
     `;
 
-    this.emailInput = html `
+    this.emailInput = html`
       <tjb-input
         label="Email"
         type="email"
@@ -132,7 +132,7 @@ class tjbAuthRegister extends WebComponent() {
       ></tjb-input>
     `;
 
-    this.passwordInput = html `
+    this.passwordInput = html`
       <tjb-input
         label="Password"
         type="password"
@@ -144,11 +144,11 @@ class tjbAuthRegister extends WebComponent() {
       ></tjb-input>
     `;
 
-    this.messageNode = html `
+    this.messageNode = html`
       <tjb-notify></tjb-notify>
     `;
 
-    return html `
+    return html`
       <form class="login__form" onsubmit="${e => this.registerHandler(e)}">
         ${this.messageNode}
         <div class="login__fieldset">
@@ -188,7 +188,9 @@ class tjbAuthRegister extends WebComponent() {
     this.statusbar.status = "loading";
 
     const postbody = this.postbody && this.postbody.replace(/\'/g, '"');
-    const body = Object.assign({}, {
+    const body = Object.assign(
+      {},
+      {
         email: this.emailInput.value,
         password: this.passwordInput.value
       },
@@ -198,14 +200,14 @@ class tjbAuthRegister extends WebComponent() {
     console.log(body);
 
     return fetch(this.posturl, {
-        method: "POST",
-        redirect: "follow",
-        credentials: "include",
-        headers: new Headers({
-          "Content-Type": "application/json"
-        }),
-        body: JSON.stringify(body)
-      })
+      method: "POST",
+      redirect: "follow",
+      credentials: "include",
+      headers: new Headers({
+        "Content-Type": "application/json"
+      }),
+      body: JSON.stringify(body)
+    })
       .then(resp => resp.json())
       .then(resp => {
         if (resp.error) throw resp;
@@ -215,7 +217,7 @@ class tjbAuthRegister extends WebComponent() {
   }
 
   _loginSuccess(resp) {
-    bounce(this.domNode, this.dispatchEvent.bind(this, "success", resp));
+    bounce(this.domNode).then(this.dispatchEvent.bind(this, "success", resp));
   }
 
   _loginError(resp) {
@@ -232,7 +234,9 @@ class tjbAuthRegister extends WebComponent() {
 
   openHandler(event, target) {
     event.preventDefault();
-    bounce(event.target, this._location.bind(this, event.target.href, target));
+    bounce(event.target).then(
+      this._location.bind(this, event.target.href, target)
+    );
   }
 
   _location(href, target) {
@@ -253,7 +257,7 @@ class tjbAuthRegister extends WebComponent() {
   writeMessageError() {
     this.domNode.removeEventListener("animationend", this.writeMessageError);
 
-    this.messageNode.error = html `
+    this.messageNode.error = html`
       <ul>
         <li>
           <a

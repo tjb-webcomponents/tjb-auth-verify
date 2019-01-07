@@ -64,7 +64,9 @@ class tjbAuthRegister extends WebComponent() {
 
         tjb-notify {
           --notify-background-error: var(--register-notify-background-error);
-          --notify-background-success: var(--register-notify-background-success);
+          --notify-background-success: var(
+            --register-notify-background-success
+          );
           --notify-color-error: var(--register-notify-color-error);
           --notify-color-success: var(--register-notify-color-success);
           --notify-margin: var(--register-notify-margin);
@@ -208,7 +210,7 @@ class tjbAuthRegister extends WebComponent() {
   }
 
   _loginSuccess(resp) {
-    bounce(this.domNode, this.dispatchEvent.bind(this, "success", resp));
+    bounce(this.domNode).then(this.dispatchEvent.bind(this, "success", resp));
   }
 
   _loginError(resp) {
@@ -222,7 +224,7 @@ class tjbAuthRegister extends WebComponent() {
 
   openHandler(event, target) {
     event.preventDefault();
-    bounce(event.target, this._location.bind(this, event.target.href, target));
+    bounce(event.target).then(this._location.bind(this, event.target.href, target));
   }
 
   _location(href, target) {
