@@ -75,6 +75,13 @@ All attributes:
 | mailurl   | mailurl="https://jsonplaceholder.typicode.com/users" | `URL` that will be called with a `POST` call as `application/json` body. The component will send out a `POST` on initialization |
 | email     | email="foo@bar.baz"                                  | E-Mail that will be used for calls                                                                                              |
 
+### Methods
+
+| method  | example    | description                        |
+| ------- | ---------- | ---------------------------------- |
+| error   | .error()   | Sets the widget in an error state  |
+| success | .success() | Sets the widget in a success state |
+
 ### Events
 
 | name          | details                                  | description                                                                                |
