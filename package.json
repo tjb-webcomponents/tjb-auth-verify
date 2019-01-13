@@ -1,6 +1,6 @@
 {
   "name": "tjb-auth-verify",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "awesome auth-verify webcomponent",
   "main": "docs/tjb-auth-verify.min.js",
   "directories": {
