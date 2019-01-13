@@ -83,6 +83,8 @@ All attributes:
 | success       | - resp (@Object)                         | when the verify (post) call returned a success message                                     |
 | success-email | - resp (@Object)                         | when the email call returned a success message                                             |
 | error         | - resp (@Object)                         | when the verify (post) call returned an error message                                      |
+| sendmail      | - body (@Object)                         | triggered on sendmail request. Hold the body of the potential request (email)              |
+| verify        | - body (@Object)                         | triggered on verification request. Hold the body of the potential request (email, key)     |
 
 You can listen to events like so: `tjbVerify.addEventListener('verify/success', (e) => { /* do stuff */ })`.
 

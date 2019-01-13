@@ -222,6 +222,9 @@ class tjbAuthVerify extends WebComponent() {
     const body = JSON.parse(postbody || "{}");
     body.email = this.email;
 
+    this.dispatchEvent("sendmail", body);
+    if (!this.mailurl) return false;
+
     return fetch(this.mailurl, {
       method: "POST",
       credentials: "include",
@@ -257,6 +260,9 @@ class tjbAuthVerify extends WebComponent() {
     const body = JSON.parse(postbody || "{}");
     body.email = this.email;
     body.key = this.key;
+
+    this.dispatchEvent("verify", body);
+    if (!this.posturl) return false;
 
     return fetch(this.posturl, {
       method: "POST",
